@@ -2,25 +2,26 @@
 # a single type of letter by that letter followed by the count if the result
 # is shorter than the original.
 
-# approach: put all chars in dict,
 def compress(string):
-  dict = {}
-  for char in string:
-    if char not in dict:
-      dict[char] = 1
-    else:
-      dict[char] += 1
-  encoded = []
-  for key, value in dict.items():
-    if value == 1:
-      encoded.append(key)
-    elif value == 2:
-      encoded.append(key)
-      encoded.append(key)
-    else:
-      encoded.append(key)
-      encoded.append(str(value))
-  return ''.join(encoded)
+    encoded = []
+    curr_char = ""
+    repeat = False
+    rp_cnt = 1
+    for idx in range(len(string)):
+        repeat =  string[idx] == curr_char
+        if not repeat:
+            # if new char, add freq of last char
+            if rp_cnt != 1:
+                encoded.append(str(rp_cnt))
+                rp_cnt = 1
+            # set new focused char
+            curr_char = string[idx]
+            encoded.append(curr_char)
+        else:
+            rp_cnt += 1
+            if idx == len(string)-1:
+                encoded.append(str(rp_cnt))
+    return ''.join(encoded)
 
 if __name__ == "__main__":
   import sys
