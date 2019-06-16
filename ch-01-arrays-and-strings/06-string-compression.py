@@ -19,7 +19,7 @@ def compress(string):
       encoded.append(key)
     else:
       encoded.append(key)
-      encoded.append(value)
+      encoded.append(str(value))
   return ''.join(encoded)
 
 if __name__ == "__main__":
