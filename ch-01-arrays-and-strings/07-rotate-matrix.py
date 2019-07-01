@@ -5,9 +5,26 @@
 import unittest
 
 def rotate_matrix(m):
+    n = len(m)
+    rotm = [None]*n
+    for row in range(n):
+        rotm[row]=[None]*n
+    for row in range(n):
+        for col in range(n):
+            rotm[n-col-1][row] = m[row][col]
+    return rotm
 
 def rotate_matrix_in_place(m):
-
+    n = len(m)
+    for col in range(int(n/2)):
+        for row in range(col, n-col-1):
+            temp1 = m[n-col-1][row]
+            m[n-col-1][row]=m[row][col]
+            temp2 = m[n - row - 1][n - col - 1]
+            m[n - row - 1][n - col - 1] = temp1
+            temp1 = m[col][n - row - 1]
+            m[col][n - row - 1] = temp2
+            m[row][col] = temp1
 
 class Test(unittest.TestCase):
   def test_rotate_matrix(self):

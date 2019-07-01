@@ -5,12 +5,12 @@ import java.util.concurrent.Callable;
 public class RandoSet {
   private String[] array;
   private Random random;
-  
+
   public RandoSet(String[] array, int seed) {
     this.array = array;
     this.random = new Random(seed);
   }
-  
+
   public ArrayList<String> randomSubset() throws Exception {
     ArrayList<String> subset = new ArrayList<String>();
     Callable<Boolean> include = () -> { return random.nextBoolean(); };
@@ -22,3 +22,6 @@ public class RandoSet {
     return subset;
   }
 }
+
+private String[] array;
+private Random random;

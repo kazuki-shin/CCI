@@ -3,8 +3,21 @@
 import unittest
 
 def is_rotation(s1, s2):
+    tmp = s1+s1
+    return is_substring(tmp,s2)
 
 def is_substring(s1, s2):
+    idx1 = 0
+    idx2 = 0
+    if s1 == s2:
+        return True
+    while idx1 < len(s1):
+        if s1[idx1] == s2[idx2]:
+            idx2+=1
+        if idx2 == len(s2):
+            return True
+        idx1+=1
+    return False
 
 class Test(unittest.TestCase):
   def test_is_rotation(self):

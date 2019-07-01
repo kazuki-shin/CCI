@@ -3,7 +3,23 @@
 import unittest
 
 def zero_out_row_col(mat):
-
+    n = len(mat)
+    if n == 0:
+        return mat
+    m = len(mat[0])
+    zero_row, zero_col = [],[]
+    for row in range(n):
+        for col in range(m):
+            if mat[row][col] == 0:
+                zero_row.append(row)
+                zero_col.append(col)
+                break
+    for row in zero_row:
+        for col in range(m):
+            mat[row][col] = 0
+    for row in range(n):
+        for col in zero_col:
+            mat[row][col] = 0
 
 class Test(unittest.TestCase):
   def test_zero_out_row_col_matrix(self):
