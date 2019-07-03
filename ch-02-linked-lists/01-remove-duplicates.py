@@ -3,9 +3,22 @@
 import unittest
 
 def remove_duplicates(head):
-    node = head
+    cur_node = head
+    prev_node = null
+    seen = {}
     if node:
-        values = {node.data = }
+      if node.data in seen:
+        node = remove_node(prev_node, node)
+      else:
+        seen[node.data] = True
+        prev_node = node
+        node = node.next
+    
+def remove_node(prev_node,cur_node):
+  prev_node.next = cur_node.next
+  del cur_node
+  return prev_node.next
+        
 
 class Node():
   def __init__(self, data, next):

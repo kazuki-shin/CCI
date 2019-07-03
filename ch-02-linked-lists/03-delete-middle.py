@@ -3,9 +3,13 @@
 import unittest
 
 def delete_middle(node):
+  next = node.next
+  node = next
+  node.next = next.next
 
 class Node():
   def __init__(self, data, next=None):
+    self.data, self.next = data, next
 
 class Test(unittest.TestCase):
   def test_delete_middle(self):

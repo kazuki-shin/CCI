@@ -3,9 +3,22 @@
 import unittest
 
 def kth_to_last(head, k):
+  node = head
+  cnt = 0
+  if node:
+    node.next
+    cnt += 1
+    
+  node2 = head
+  if cnt > k:
+    node.next
+    cnt-=1
+    
+  return node.data
 
 class Node():
   def __init__(self, data, next=None):
+    self.data, self.next = data, next
 
 class Test(unittest.TestCase):
   def test_kth_to_last(self):
